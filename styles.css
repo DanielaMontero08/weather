@@ -1,73 +1,81 @@
+body {
+  background: linear-gradient(
+    112.1deg,
+    rgb(32, 38, 57) 11.4%,
+    rgb(63, 76, 119) 70.2%
+  );
+}
+
 .weather-app {
-    border: 1px solid rgb(152, 151, 151);
-    border-radius: 10px;
-    padding: 20px;
-    margin: 20px auto;
-    max-width: 600px;
+  border: 1px solid rgb(152, 151, 151);
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 600px;
 }
 
 h1 {
-    margin: 0;
-    margin-top: 10px;
+  margin: 0;
+  margin-top: 10px;
 }
 
 button {
-    border-radius: 10px;
-    margin: auto 20px;
-    color: white;
-    background-color: rgb(6, 6, 57);
-    padding: 5px;
+  border-radius: 10px;
+  margin: auto 20px;
+  color: white;
+  background-color: rgb(6, 6, 57);
+  padding: 5px;
 }
 
 p {
-    margin: 10px 20px;
-    text-align: center;
+  margin: 10px 20px;
+  text-align: center;
 }
 
 .temperature {
-    font-size: 60px;
-    margin: 70px 20px 0px 20px;
+  font-size: 60px;
+  margin: 70px 20px 0px 20px;
 }
 
 .temperature-hour {
-    text-align: right;
+  text-align: right;
 }
 
 .city {
-    text-align: left;
-    margin: 0;
-    font-size: 20px;
+  text-align: left;
+  margin: 0;
+  font-size: 20px;
 }
 
 .day-month {
-    text-align: left;
-    margin: 0;
-    color: grey;
+  text-align: left;
+  margin: 0;
+  color: grey;
 }
 
 .card {
-    margin: 0 auto;
-    margin-bottom: 12px;
+  margin: 0 auto;
+  margin-bottom: 12px;
 }
 
 .search-box {
-    border-radius: 20px;
-    width: 400px;
-    padding: 6px;
-    margin: 10px auto;
+  border-radius: 20px;
+  width: 400px;
+  padding: 6px;
+  margin: 10px auto;
 }
 
 .fa-cloud {
-    font-size: 70px;
-    margin: 20px 0px 20px 70px;
+  font-size: 70px;
+  margin: 20px 0px 20px 70px;
 }
 
 .fa-cloud-sun {
-    font-size: 40px;
-    margin-left: 15px;
+  font-size: 40px;
+  margin-left: 15px;
 }
 
 .fa-cloud-showers-heavy {
-    font-size: 40px;
-    margin-left: 25px;
+  font-size: 40px;
+  margin-left: 25px;
 }
