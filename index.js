@@ -27,6 +27,22 @@ function displayWeatherCondition(response) {
   );
 }
 
+function displayTemperature(response) {
+  let iconElement = document.querySelector("#icon");
+  let windElement = document.querySelector("#wind");
+  let humidityElement = document.querySelector("#humidity");
+  let dateElement = document.querySelector("#date");
+
+  humidityElement.innerHTML = response.data.main.humidity;
+  dateElement.innerHTML = formatDate(response.data.dt * 1000);
+  windElement.innerHTML = Math.round(response.data.wind.speed);
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn${reponse.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute("alt", response.data.weather[0].description);
+}
+
 function searchCity(city) {
   let apiKey = "cabdbda40038ba7d1165b953b1c7bd6c";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
@@ -62,7 +78,7 @@ function convertToCelsius(event) {
   temperatureElement.innerHTML = 19;
 }
 
-let dateWeather = document.querySelector("#current-date");
+let dateWeather = document.querySelector("#date");
 let currentTime = new Date();
 dateWeather.innerHTML = formatDate(currentTime);
 
