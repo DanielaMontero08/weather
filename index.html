@@ -31,23 +31,29 @@
         </form>
         <h1>Today</h1>
         <p class="city" id="current-city">Santiago, Chile</p>
-        <p class="day-time" id="date">Monday 11:00</p>
+        <p class="day-month" id="current-date">Monday 11:00</p>
         <p class="description-weather" id="descriprion">Clear</p>
         <div class="row">
           <div class="col-6">
-            <i class="fa-solid fa-cloud" id="icon"></i>
-          </div>
-          <div class="col">
+            <img
+              src="https://ssl.gstatic.com/onebox/weather/64/sunny.png"
+              alt="Clear"
+              id="icon"
+              class="float-left"
+            />
             <span class="temperature" id="temperature">19</span>
-            <span class="celcius"
-              ><a href="#" class="celcius-p" id="celsius-link">°C </a>
-              <a href="#" class="fahrenheit-p" id="fahrenheit-link"
+            <span class="celcius"></span>
+            <a href="#" class="celcius-p" id="celsius-link">°C </a>
+            <a href="#" class="fahrenheit-p" id="fahrenheit-link"
                 >|°F</a
               ></span
             >
+          </div>
+          <div class="col">
             <div class="row">
               <ul>
-                <li>Wind: <span id="wind"></span> km/h</li>
+                <li>Wind: <span id="wind"></span>2 km/h</li>
+                <li>Humidity: <span id="humidity"></span></li>
               </ul>
             </div>
           </div>
