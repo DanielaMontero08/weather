@@ -75,6 +75,7 @@ function getForecast(coordinates) {
 function displayTemperature(response) {
   let temperatureElement = document.querySelector("#temperature");
   let windElement = document.querySelector("#wind");
+  let humidityElement = document.querySelector("#humidity");
   let dateElement = document.querySelector("#date");
   let iconElement = document.querySelector("#icon");
 
@@ -82,6 +83,7 @@ function displayTemperature(response) {
 
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
   windElement.innerHTML = Math.round(response.data.wind.speed * 3.6);
+  humidityElement.innerHTML = response.data.main.humidity;
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
   iconElement.setAttribute(
     "src",
