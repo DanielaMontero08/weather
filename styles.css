@@ -63,7 +63,13 @@ p {
   font-size: 20px;
 }
 
-.day-month {
+.day-time {
+  text-align: left;
+  margin: 0;
+  color: grey;
+}
+
+.description-weather{
   text-align: left;
   margin: 0;
   color: grey;
