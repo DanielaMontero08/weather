@@ -27,6 +27,7 @@ function displayWeatherCondition(response) {
   );
 }
 
+
 function displayTemperature(response) {
   let iconElement = document.querySelector("#icon");
   let windElement = document.querySelector("#wind");
@@ -89,3 +90,4 @@ let currentLocation = document.querySelector("#current-location");
 currentLocation.addEventListener("click", getCurrentLocation);
 
 searchCity("New York");
+displayTemperature();
