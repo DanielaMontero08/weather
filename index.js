@@ -27,11 +27,6 @@ function displayWeatherCondition(response) {
   );
 }
 
-function displayForecast(){
-  let forecastElement = document.querySelector("#forecast");
-  let days = ["Thu"]
-}
-
 function displayTemperature(response) {
   let iconElement = document.querySelector("#icon");
   let windElement = document.querySelector("#wind");
@@ -45,6 +40,9 @@ function displayTemperature(response) {
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
 }
+let apiKey = "cabdbda40038ba7d1165b953b1c7bd6c";
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+axios.get(apiUrl).then(displayTemperature);
 
 function searchCity(city) {
   let apiKey = "cabdbda40038ba7d1165b953b1c7bd6c";
