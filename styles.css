@@ -36,6 +36,18 @@ p {
   text-align: center;
 }
 
+.celcius-p{
+  position: relative;
+  font-size: 16px;
+  top: -34px;
+}
+
+.fahrenheit-p{
+  position: relative;
+  font-size: 16px;
+  top: -34px;
+}
+
 .temperature {
   font-size: 60px;
   margin: 70px 20px 0px 20px;
