@@ -35,10 +35,8 @@ function displayForecast(){
 function displayTemperature(response) {
   let iconElement = document.querySelector("#icon");
   let windElement = document.querySelector("#wind");
-  let humidityElement = document.querySelector("#humidity");
   let dateElement = document.querySelector("#date");
 
-  humidityElement.innerHTML = response.data.main.humidity;
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
   windElement.innerHTML = Math.round(response.data.wind.speed);
   iconElement.setAttribute(
