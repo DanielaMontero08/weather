@@ -1,11 +1,11 @@
-function formatDate(timestamp){
+function formatDate(timestamp) {
   let date = new Date(timestamp);
   let hours = date.getHours();
-  if (hours < 10){
+  if (hours < 10) {
     hours = `0${hours}`;
   }
   let minutes = date.getMinutes();
-  if (minutes < 10){
+  if (minutes < 10) {
     minutes = `0${minutes}`;
   }
   let days = [
@@ -15,13 +15,13 @@ function formatDate(timestamp){
     "Wednesday",
     "Thursday",
     "Friday",
-    "Saturday"
+    "Saturday",
   ];
   let day = days[date.getDay()];
   return `${day} ${hours}:${minutes}`;
 }
 
-function displayTemperature(response){
+function displayTemperature(response) {
   let temperatureElement = document.querySelector("#temperature");
   let cityElement = document.querySelector("#city");
   let descriptionElement = document.querySelector("#description");
