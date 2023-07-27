@@ -22,37 +22,50 @@ function formatDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
-function formatDay(timestamp) {
-  let date = new Date(timestamp * 1000);
-  let day = date.getDay();
-  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
 
-  return days[day];
-}
-
-function getForecast(coordinates) {
-  let apiKey = "cabdbda40038ba7d1165b953b1c7bd6c";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(displayForecast);
+  let forecastHTML = `<div class="row>`;
+  let days = ["Thu", "Fri"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+  <div class="row">
+    <div class="col-2">
+      <div class="weather-forecast-date">${day}</div>
+      <img
+        src="http://openweathermap.org/img/wn/50d@2x.png"
+        alt=""
+        width="42"
+      />
+      <div class="weather-forecast-temperature">
+        <span class="weather-temperature-max"> 18°</span>
+        <span class="weather-temperature-min"> 12°</span>
+      </div>
+    </div>
+  </div>
+  `;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innetHTML = forecastHTML;
 }
 
 function displayTemperature(response) {
+  console.log(response.data);
   let temperatureElement = document.querySelector("#temperature");
   let cityElement = document.querySelector("#city");
   let windElement = document.querySelector("#wind");
   let humidityElement = document.querySelector("#humidity");
   let dateElement = document.querySelector("#date");
   let iconElement = document.querySelector("#icon");
-  let descriptionElement = document.querySelector("#description");
 
   let celsiusTemperature = response.data.main.temp;
-
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
   cityElement.innerHTML = response.data.name;
   windElement.innerHTML = Math.round(response.data.wind.speed * 3.6);
   humidityElement.innerHTML = response.data.main.humidity;
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
-  descriptionElement.innetHTML = response.data.weather[0].description;
   iconElement.setAttribute(
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`

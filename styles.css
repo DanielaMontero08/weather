@@ -79,6 +79,7 @@ ul{
   text-align: left;
   margin: 0;
   color: grey;
+  text-transform: capitalize;
 }
 
 .card {
