@@ -24,14 +24,13 @@ function formatDate(timestamp) {
 
 function displayForecast() {
   let forecastElement = document.querySelector("#forecast");
-
-  let forecastHTML = `<div class="row>`;
-  let days = ["Thu", "Fri"];
+  console.log("Ejecutando");
+  let days = ["Thu", "Fri", "Sat", "Sun", "Mon"];
+  let forecastHTML = `<div class="row justify-content-evenly">`;
   days.forEach(function (day) {
     forecastHTML =
       forecastHTML +
       `
-  <div class="row">
     <div class="col-2">
       <div class="weather-forecast-date">${day}</div>
       <img
@@ -44,17 +43,17 @@ function displayForecast() {
         <span class="weather-temperature-min"> 12°</span>
       </div>
     </div>
-  </div>
   `;
   });
   forecastHTML = forecastHTML + `</div>`;
-  forecastElement.innetHTML = forecastHTML;
+  forecastElement.innerHTML = forecastHTML;
 }
 
 function displayTemperature(response) {
-  console.log(response.data);
+  console.log(response);
   let temperatureElement = document.querySelector("#temperature");
   let cityElement = document.querySelector("#city");
+  let descriptionElement = document.querySelector("#description");
   let windElement = document.querySelector("#wind");
   let humidityElement = document.querySelector("#humidity");
   let dateElement = document.querySelector("#date");
@@ -63,6 +62,7 @@ function displayTemperature(response) {
   let celsiusTemperature = response.data.main.temp;
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
   cityElement.innerHTML = response.data.name;
+  descriptionElement.innerHTML = response.data.weather[0].description;
   windElement.innerHTML = Math.round(response.data.wind.speed * 3.6);
   humidityElement.innerHTML = response.data.main.humidity;
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
@@ -77,6 +77,7 @@ function search(city) {
   let apiKey = "cabdbda40038ba7d1165b953b1c7bd6c";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayTemperature);
+  displayForecast();
 }
 
 function handleSubmit(event) {
