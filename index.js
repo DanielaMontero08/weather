@@ -38,17 +38,21 @@ function getForecast(coordinates) {
 
 function displayTemperature(response) {
   let temperatureElement = document.querySelector("#temperature");
+  let cityElement = document.querySelector("#city");
   let windElement = document.querySelector("#wind");
   let humidityElement = document.querySelector("#humidity");
   let dateElement = document.querySelector("#date");
   let iconElement = document.querySelector("#icon");
+  let descriptionElement = document.querySelector("#description");
 
   let celsiusTemperature = response.data.main.temp;
 
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
+  cityElement.innerHTML = response.data.name;
   windElement.innerHTML = Math.round(response.data.wind.speed * 3.6);
   humidityElement.innerHTML = response.data.main.humidity;
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
+  descriptionElement.innetHTML = response.data.weather[0].description;
   iconElement.setAttribute(
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
