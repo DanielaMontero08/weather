@@ -1,3 +1,42 @@
+const API_WEATHER_KEY = "63412008219fb63574ctadofe09b6581";
+const API_URL_BASE = "https://api.shecodes.io/weather/v1";
+
+const temperatureElement = document.querySelector("#temperature");
+const cityElement = document.querySelector("#currentCity");
+const descriptionElement = document.querySelector("#description");
+const windElement = document.querySelector("#wind");
+const humidityElement = document.querySelector("#humidity");
+const dateElement = document.querySelector("#date");
+const iconElement = document.querySelector("#icon");
+const cityInputElement = document.querySelector("#city-input");
+const form = document.querySelector("#search-form");
+const forecastElement = document.querySelector("#forecast");
+
+function handleSubmit(event) {
+  event.preventDefault();
+  search(cityInputElement.value);
+}
+function search(city) {
+  let currentUrl = `${API_URL_BASE}/current?query=${city}&key=${API_WEATHER_KEY}`;
+  let forecastUrl = `${API_URL_BASE}/forecast?query=${city}&key=${API_WEATHER_KEY}`;
+  axios.get(currentUrl).then(displayTemperature);
+  axios.get(forecastUrl).then(displayForecast);
+}
+
+function displayTemperature(response) {
+  let celsiusTemperature = response.data.temperature.current;
+  cityElement.innerHTML = response.data.city;
+  descriptionElement.innerHTML = response.data.condition.description;
+  humidityElement.innerHTML = response.data.temperature.humidity;
+
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+  windElement.innerHTML = Math.round(response.data.wind.speed * 3.6);
+  dateElement.innerHTML = formatDate(response.data.time * 1000);
+
+  iconElement.setAttribute("src", `${response.data.condition.icon_url}`);
+  iconElement.setAttribute("alt", response.data.condition.description);
+}
+
 function formatDate(timestamp) {
   let date = new Date(timestamp);
   let hours = date.getHours();
@@ -22,71 +61,42 @@ function formatDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
-function displayForecast() {
-  let forecastElement = document.querySelector("#forecast");
-  console.log("Ejecutando");
-  let days = ["Thu", "Fri", "Sat", "Sun", "Mon"];
-  let forecastHTML = `<div class="row justify-content-evenly">`;
-  days.forEach(function (day) {
+function displayForecast(response) {
+  console.log(response);
+
+  let forecastDataDaily = response.data.daily;
+  let forecastDays = forecastDataDaily.slice(0, 4);
+  let forecastHTML = "";
+  let shortDay;
+
+  forecastDays.forEach(function (day) {
+    shortDay = formatDate(day.time * 1000).slice(0, 3);
     forecastHTML =
       forecastHTML +
       `
     <div class="col-2">
-      <div class="weather-forecast-date">${day}</div>
-      <img
-        src="http://openweathermap.org/img/wn/50d@2x.png"
-        alt=""
-        width="42"
-      />
-      <div class="weather-forecast-temperature">
-        <span class="weather-temperature-max"> 18°</span>
-        <span class="weather-temperature-min"> 12°</span>
+      <div class="weather-item">
+        <div class="weather-forecast-date">${shortDay}</div>
+        <img
+          src="${day.condition.icon_url}"
+          alt=""
+          width="80"
+        />
+        <div class="weather-forecast-temperature">
+          <span class="weather-temperature-max">${Math.round(
+            day.temperature.maximum
+          )} C  º</span>
+          <span class="weather-temperature-min">${Math.round(
+            day.temperature.minimum
+          )} Cº</span>
+        </div>
       </div>
     </div>
   `;
   });
-  forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
 
-function displayTemperature(response) {
-  console.log(response);
-  let temperatureElement = document.querySelector("#temperature");
-  let cityElement = document.querySelector("#city");
-  let descriptionElement = document.querySelector("#description");
-  let windElement = document.querySelector("#wind");
-  let humidityElement = document.querySelector("#humidity");
-  let dateElement = document.querySelector("#date");
-  let iconElement = document.querySelector("#icon");
-
-  let celsiusTemperature = response.data.main.temp;
-  temperatureElement.innerHTML = Math.round(celsiusTemperature);
-  cityElement.innerHTML = response.data.name;
-  descriptionElement.innerHTML = response.data.weather[0].description;
-  windElement.innerHTML = Math.round(response.data.wind.speed * 3.6);
-  humidityElement.innerHTML = response.data.main.humidity;
-  dateElement.innerHTML = formatDate(response.data.dt * 1000);
-  iconElement.setAttribute(
-    "src",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-  );
-  iconElement.setAttribute("alt", response.data.weather[0].description);
-}
-
-function search(city) {
-  let apiKey = "cabdbda40038ba7d1165b953b1c7bd6c";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(displayTemperature);
-  displayForecast();
-}
-
-function handleSubmit(event) {
-  event.preventDefault();
-  let cityInputElement = document.querySelector("#city-input");
-  search(cityInputElement.value);
-}
-
-let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
 
-search("New York");
+search("New York");
