@@ -17,57 +17,72 @@
   <body>
     <div class="container">
       <div class="weather-app">
-        <form id="search-form">
-          <input
-            type="search"
-            placeholder="Search"
-            class="search-box"
-            id="city-input"
-            autofocus="on"
-            autocomplete="off"
-          />
-          <button>Search</button>
-          <button id="current-location">Current</button>
-        </form>
-        <h1>Today</h1>
-        <p class="city" id="city"></p>
+        <div class="row py-3">
+          <form id="search-form">
+            <div class="row">
+             <div class="col-6">
+              <input
+              type="search"
+              class="search-box"
+              id="city-input"
+              autofocus="on"
+              autocomplete="off"
+              />
+             </div>
+              <div class="col-6">
+                <div class="buttons-container">
+                <button>Search</button>
+                <button id="current-location">Current</button>
+              </div>
+            </div>
+            </div>
+          </form>
+        </div>
+        <h1 class=" mb-3">Today</h1>
+        <p id="currentCity" class="city" >Santiago, Chile</p>
         <p class="day-month" id="date">Monday 11:00</p>
-        <p class="description-weather" id="description"></p>
+        <p class="description-weather" id="description">Clear</p>
         <div class="row">
           <div class="col-6">
+           <div class="d-flex">
             <img
-              src="https://ssl.gstatic.com/onebox/weather/64/sunny.png"
-              alt="Clear"
-              id="icon"
-              class="float-left"
-            />
-            <span class="temperature" id="temperature">19</span>
-            <span class="celcius"></span>
-            <a class="celcius-p">°C</a>
+            src="https://ssl.gstatic.com/onebox/weather/64/sunny.png"
+            alt="Clear"
+            id="icon"
+            class="float-left m-0"
+          />
+            <div class="d-flex">
+              <p class="temperature" id="temperature">19</p>
+              <p href="#" class="celcius-p temp m-0" id="celsius-link fw-bold">°C</p>
+            </div>
+           </div>
           </div>
-          <div class="col">
-            <div class="row">
-              <ul>
-                <li>Wind: <span id="wind"></span>2 km/h</li>
-                <li>Humidity: <span id="humidity"></span>%</li>
-              </ul>
+          <div class="col-6">
+            <div class="row justify-content-center align-items-center h-100">
+              <div class="col-10">
+                <ul class="px-0">
+                  <li>Wind: <span id="wind"></span>2 km/h</li>
+                  <li>Humidity: <span id="humidity"></span>%</li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
         <hr />
-        <div class="weather-forecast" id="forecast"></div>
+        <h5>Next Days</h5>
+        <div class="row justify-content-evenly py-4" id="forecast">
+        </div>
+        <script
+          src="https://kit.fontawesome.com/378ca22ea1.js"
+          crossorigin="anonymous"
+        ></script>
+        <script src="./index.js"></script>
         <a
-          class="mt-4 d-block"
           href="https://github.com/DanielaMontero08?tab=repositoriess"
           target="_blank"
           >GitHub repository</a
         >
       </div>
     </div>
-    <script
-      src="https://kit.fontawesome.com/378ca22ea1.js"
-      crossorigin="anonymous"
-    ></script>
-    <script src="./index.js"></script>
   </body>
 </html>
