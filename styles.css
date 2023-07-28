@@ -5,9 +5,9 @@ body {
 }
 
 .weather-app {
-  background: #2a2438;
+  background: linear-gradient(to top, #cd9cf2 0%, #f6f3ff 100%);
   box-shadow: rgba(0, 0, 0, 0.1) 2px 2px 7px 4px;
-  color: aliceblue;
+  color: rgba(3, 0, 0, 0.953);
   border-radius: 10px;
   padding: 20px;
   margin: 20px auto;
@@ -93,6 +93,7 @@ ul {
   display: flex;
   justify-content: space-between;
 }
+
 .buttons-container button {
   width: fit-content;
   padding: 10px 25px;
@@ -135,11 +136,11 @@ ul {
 }
 
 .weather-temperature-max {
-  color: #927fbf;
+  color: #68389b;
 }
 
 .weather-temperature-min {
-  color: #c4bbf0;
+  color: #42377b;
 }
 .temp {
   text-decoration: none;
