@@ -1,16 +1,13 @@
 body {
-  background: radial-gradient(
-    circle at 18.7% 37.8%,
-    rgb(250, 250, 250) 0%,
-    rgb(225, 234, 238) 90%
-  );
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
   font-weight: 600;
   font-family: monospace;
 }
 
 .weather-app {
-  background: #ffc5f49c;
+  background: #2a2438; 
   box-shadow: rgba(0, 0, 0, 0.1) 2px 2px 7px 4px;
+  color: aliceblue;
   border-radius: 10px;
   padding: 20px;
   margin: 20px auto;
@@ -142,11 +139,11 @@ ul{
 
 .weather-temperature-max {
 
-  color: red;
+  color: #927fbf;;
 }
 
 .weather-temperature-min {
-  color: blue;
+  color: #c4bbf0;
 }
 .temp {
   text-decoration: none;
