@@ -5,7 +5,7 @@ body {
 }
 
 .weather-app {
-  background: #2a2438; 
+  background: #2a2438;
   box-shadow: rgba(0, 0, 0, 0.1) 2px 2px 7px 4px;
   color: aliceblue;
   border-radius: 10px;
@@ -35,16 +35,14 @@ p {
   text-align: center;
 }
 
-ul{
+ul {
   list-style: none;
   color: grey;
 }
 
-.celcius-p{
+.celcius-p {
   font-size: 30px;
 }
-
-
 
 .temperature {
   font-size: 60px;
@@ -66,7 +64,7 @@ ul{
   color: grey;
 }
 
-.description-weather{
+.description-weather {
   text-align: left;
   margin: 0;
   color: grey;
@@ -78,7 +76,6 @@ ul{
 }
 
 .search-box {
-
   border-radius: 20px;
   width: 100%;
   padding: 10px 25px;
@@ -99,15 +96,15 @@ ul{
 .buttons-container button {
   width: fit-content;
   padding: 10px 25px;
-  transition: all .5s ease;
+  transition: all 0.5s ease;
   opacity: 1;
 }
 .buttons-container button:hover {
-  opacity: .7;
-  transition: all .5s ease;
+  opacity: 0.7;
+  transition: all 0.5s ease;
 }
 
-.float-left{
+.float-left {
   margin-bottom: 25px;
   margin-left: 7px;
 }
@@ -122,24 +119,23 @@ ul{
   margin-left: 25px;
 }
 
-
 .weather-item {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.weather-forecast-date  {
+.weather-forecast-date {
   text-align: center;
 }
 
-.weather-temperature-max, .weather-temperature-min{
+.weather-temperature-max,
+.weather-temperature-min {
   display: flex;
   flex-direction: column;
 }
 
 .weather-temperature-max {
-
-  color: #927fbf;;
+  color: #927fbf;
 }
 
 .weather-temperature-min {
